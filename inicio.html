@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto interdisciplinar</title>
+
+    <link rel="stylesheet" href="inicio.css">
+</head>
+
+<body>
+    <h1>Cronograma de Actividades</h1>
+
+
+    <script src="inicio.js"></script>
+    <section id="tablaCronograma">
+      <table class="cronograma">
+        <thead>
+          <tr>
+            <th>Actividades</th>
+            <th>semana 1</th>
+            <th>semana 2</th>
+            <th>semana 3</th>
+            <th>semana 4</th>
+            <th>semana 5</th>
+            <th>semana 6</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="actividad verde">Autocuidado fisico</td>
+            <td><button id="btnAuto" class="barra verde">Ver</button></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="actividad azul">Autocuidado financiero</td>
+            <td></td>
+            <td><button id="btnstonks" class="barra azul" data-info="analisis">Ver</button></td>
+            <td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td class="actividad rojo">Autocuidado sexual</td>
+            <td></td><td></td>
+            <td><button class="barra rojo" data-info="borrador1">Ver</button></td>
+            <td><button class="barra rojo" data-info="borrador1">Ver</button></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <td class="actividad naranja">Segundo borrador del proyecto</td>
+            <td></td><td></td><td></td>
+            <td><button class="barra naranja" data-info="borrador2">Ver</button></td>
+            <td><button class="barra naranja" data-info="borrador2">Ver</button></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="actividad morado">Propuesta final del proyecto</td>
+            <td></td><td></td><td></td><td></td>
+            <td><button class="barra morado" data-info="propuesta">Ver</button></td>
+            <td><button class="barra morado" data-info="propuesta">Ver</button></td>
+          </tr>
+          <script>
+        document.body.style.backgroundImage = "url('fondo_inicio.jpg')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundAttachment = "fixed";
+    </script>
+        </tbody>
+      </table>
+    </section>
+</body>
+
+</html>
