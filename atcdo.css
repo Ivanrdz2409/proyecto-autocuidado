@@ -22,8 +22,8 @@ h3 {
     color: #4e4e4e;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
     border: outset;
-    display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -32,8 +32,30 @@ h4 {
     color: #4e4e4e;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
     border: outset;
-    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h5 {
+    background-color: #a6e3a1;
+    color: #4e4e4e;
+    border-radius: 12px;
+    text-align: center;
+    padding: 3px;
+    border: outset;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h6 {
+    background-color: #a6e3a1;
+    color: #4e4e4e;
+    border-radius: 12px;
+    text-align: center;
+    padding: 3px;
+    border: outset;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -42,6 +64,33 @@ img {
     padding: 60px;
 }
 
-body{
+body {
     background-color: #bbbbbb;
+}
+
+
+.cuadros-texto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1150px;
+}
+
+.cuadros-texto h2 {
+    grid-column: span 2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cuadro {
+    background-color: #95db9b;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.219);
+    text-align: left;
 }
