@@ -2,72 +2,63 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto interdisciplinar</title>
-
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto adicciones</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <h1>Cronograma de Actividades</h1>
 
+    <div class="card">
+        <h1>Todo iba bien… hasta que no</h1>
+        <p>Solo una mas...</p>
+        <button id="startBtn">Comenzar</button>
 
-    <script src="index.js"></script>
-    <section id="tablaCronograma">
-      <table class="cronograma">
-        <thead>
-          <tr>
-            <th>Actividades</th>
-            <th>semana 1</th>
-            <th>semana 2</th>
-            <th>semana 3</th>
-            <th>semana 4</th>
-            <th>semana 5</th>
-            <th>semana 6</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="actividad verde">Autocuidado</td>
-            <td><button id="btnAuto" class="barra verde">Ver</button></td>
-            <td></td><td></td><td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td class="actividad azul">Autocuidado financiero</td>
-            <td></td>
-            <td><button id="btnstonks" class="barra azul" data-info="analisis">Ver</button></td>
-            <td></td><td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td class="actividad rojo">Autocuidado sexual</td>
-            <td></td><td></td>
-            <td><button id="btnsyg" class="barra rojo" data-info="borrador1">Ver</button></td>
-            <td><button id="btnsyg" class="barra rojo" data-info="borrador1">Ver</button></td>
-            <td></td><td></td>
-          </tr>
-          <tr>
-            <td class="actividad naranja">Segundo borrador del proyecto</td>
-            <td></td><td></td><td></td>
-            <td><button class="barra naranja" data-info="borrador2">Ver</button></td>
-            <td><button class="barra naranja" data-info="borrador2">Ver</button></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="actividad morado">Propuesta final del proyecto</td>
-            <td></td><td></td><td></td><td></td>
-            <td><button class="barra morado" data-info="propuesta">Ver</button></td>
-            <td><button class="barra morado" data-info="propuesta">Ver</button></td>
-          </tr>
-          <script>
-        document.body.style.backgroundImage = "url('fondo_inicio.jpg')";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundRepeat = "no-repeat";
-        document.body.style.backgroundAttachment = "fixed";
-    </script>
-        </tbody>
-      </table>
-    </section>
+        <footer>
+            <p>Juego acerca de las adicciones</p>
+        </footer>
+    </div>
+    <div class="modal hidden" id="modal1">
+        <div class="modal-content">
+            <h2>¡Bienvenido!</h2>
+            <p>Estás a punto de comenzar una nueva experiencia.
+                Nadie se despierta un día pensando:
+                “Hoy voy a desarrollar una adicción.”
+
+                Normalmente empieza con frases como:
+                “Solo por hoy”,
+                “Yo controlo” o
+                “¿Qué podría salir mal?”
+
+                Spoiler: muchas cosas.
+
+                En este juego encarnas a una persona perfectamente imperfecta, experta en tomar decisiones cuestionables
+                y justificarlo todo con una sonrisa. El problema es que la realidad no siempre se ríe contigo.
+
+                Aquí te vas a equivocar, vas a prometer que no volverá a pasar y probablemente volverá a pasar. Pero
+                tranquilo: nadie dijo que aprender fuera un proceso elegante.
+
+            </p>
+            <button id="nextModal">Continuar</button>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="modal2">
+        <div class="modal-content">
+            <h2>🚀 Listo para empezar</h2>
+            <p>Todo está preparado. ¿Continuamos?
+                En este juego tomas el control de un protagonista adorablemente irresponsable. No lucha contra monstruos, sino contra la Tentación con sombrero, la Excusa Profesional y el Amigo que dice “una no pasa nada” (spoiler: siempre pasa algo).
+
+Cada turno ofrece decisiones ridículamente atractivas y peligrosamente mal pensadas. El jugador gana recompensas inmediatas como felicidad instantánea, confianza falsa y memes internos… pero también acumula efectos secundarios como cansancio extremo, decisiones peores y el desbloqueo del temido estado: “Yo controlo”.
+
+El objetivo no es ganar siempre, sino sobrevivir a tus propias decisiones el tiempo suficiente como para darte cuenta de que tal vez, solo tal vez, cambiar de rumbo no es tan mala idea.
+            </p>
+            <button id="closeAll">Entrar</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 
 </html>

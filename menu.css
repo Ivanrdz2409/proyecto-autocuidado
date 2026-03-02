@@ -1,0 +1,13 @@
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+}
+
+h1 {
+    text-align: center
+}
+
+p {
+    text-align: center
+}
