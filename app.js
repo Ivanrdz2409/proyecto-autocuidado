@@ -1,10 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-/* --------------------------
-VARIABLES DEL JUEGO
--------------------------- */
-
 const roles = [
+
 "Gamer Pro 🎮",
 "Reina del Drama 🎭",
 "Gurú Motivacional 💪",
@@ -20,16 +15,16 @@ const roles = [
 "Influencer Fake 💄",
 "Cringe Creator 😬",
 "Influencer Fantasma 👻"
+
 ];
 
 let rolAsignado = false;
+
 let seguidores = 0;
 let salud = 12;
 let cordura = 12;
 
-/* --------------------------
-ELEMENTOS DEL MENU (JUEGO)
--------------------------- */
+let logros = [];
 
 const rolBtn = document.getElementById("rolBtn");
 const rolDisplay = document.getElementById("rolDisplay");
@@ -42,64 +37,141 @@ const scrollBtn = document.getElementById("scrollBtn");
 const eventoDisplay = document.getElementById("evento");
 const opcionesDiv = document.getElementById("opciones");
 
-/* --------------------------
-EVENTOS DEL JUEGO
--------------------------- */
+const logrosDisplay = document.getElementById("logros");
 
 const eventos = [
 
 {
-texto:"🔥 Trend peligroso aparece en redes",
+texto:"🔥 Trend peligroso aparece",
 opciones:[
-{texto:"Hacer el trend arriesgado", seguidores:30, salud:-3, cordura:-1},
-{texto:"Hacer versión segura", seguidores:10, salud:-1, cordura:0},
-{texto:"Ignorarlo", seguidores:0, salud:0, cordura:1}
+{texto:"Hacerlo",seguidores:30,salud:-3,cordura:-1},
+{texto:"Versión segura",seguidores:12,salud:-1},
+{texto:"Ignorarlo",cordura:1}
 ]
 },
 
 {
 texto:"💬 Hate masivo en comentarios",
 opciones:[
-{texto:"Responder agresivamente", seguidores:20, cordura:-2},
-{texto:"Ignorar comentarios", seguidores:-5, cordura:1},
-{texto:"Cerrar comentarios", seguidores:-10, salud:1}
+{texto:"Responder agresivo",seguidores:20,cordura:-2},
+{texto:"Ignorar",cordura:1},
+{texto:"Cerrar comentarios",seguidores:-5}
 ]
 },
 
 {
-texto:"📱 Te quedas editando toda la noche",
+texto:"📹 Video viral inesperado",
 opciones:[
-{texto:"Subir video perfecto", seguidores:25, salud:-3},
-{texto:"Subir video normal", seguidores:10, salud:-1},
-{texto:"Dormir mejor", seguidores:-5, salud:2}
+{texto:"Aprovechar fama",seguidores:40},
+{texto:"Subir otro video",seguidores:20,salud:-1},
+{texto:"Descansar",salud:2}
 ]
 },
 
 {
 texto:"🎉 Colaboración con influencer famoso",
 opciones:[
-{texto:"Aceptar reto extremo", seguidores:40, salud:-4, cordura:-1},
-{texto:"Colaboración tranquila", seguidores:20},
-{texto:"Rechazar", seguidores:0, cordura:1}
+{texto:"Aceptar reto extremo",seguidores:50,salud:-4},
+{texto:"Colaboración tranquila",seguidores:25},
+{texto:"Rechazar",cordura:1}
 ]
 },
 
 {
-texto:"🧠 Crisis existencial por redes",
+texto:"🧠 Crisis existencial",
 opciones:[
-{texto:"Seguir publicando", seguidores:15, cordura:-3},
-{texto:"Tomar descanso", seguidores:-10, salud:2, cordura:2},
-{texto:"Hacer video reflexivo", seguidores:10, cordura:1}
+{texto:"Seguir publicando",seguidores:15,cordura:-3},
+{texto:"Tomar descanso",salud:3,cordura:2},
+{texto:"Video reflexivo",seguidores:10}
+]
+},
+
+{
+texto:"📱 Pasas 6 horas scrolleando",
+opciones:[
+{texto:"Seguir",salud:-3},
+{texto:"Cerrar app",cordura:1},
+{texto:"Publicar algo",seguidores:8}
+]
+},
+
+{
+texto:"💰 Marca quiere patrocinarte",
+opciones:[
+{texto:"Aceptar patrocinio",seguidores:35},
+{texto:"Negociar",seguidores:25,cordura:-1},
+{texto:"Rechazar",cordura:2}
+]
+},
+
+{
+texto:"📹 Te invitan a podcast",
+opciones:[
+{texto:"Ir",seguidores:25},
+{texto:"Decir algo polémico",seguidores:40,cordura:-2},
+{texto:"Rechazar",cordura:1}
+]
+},
+
+{
+texto:"🔥 Drama entre influencers",
+opciones:[
+{texto:"Meterte al drama",seguidores:35,cordura:-2},
+{texto:"Opinar neutral",seguidores:10},
+{texto:"Ignorar",cordura:1}
+]
+},
+
+{
+texto:"📸 Foto perfecta",
+opciones:[
+{texto:"Editar mucho",seguidores:25,salud:-1},
+{texto:"Subirla normal",seguidores:10},
+{texto:"No subir",cordura:1}
 ]
 }
 
 ];
 
-/* --------------------------
-GENERAR ROL
--------------------------- */
+const eventosRaros = [
 
-if(rolBtn){
+{
+texto:"💀 TE CANCELAN MASIVAMENTE",
+opciones:[
+{texto:"Responder agresivo",seguidores:-50,cordura:-3},
+{texto:"Pedir disculpas",seguidores:-20},
+{texto:"Desaparecer unos días",cordura:3}
+]
+},
+
+{
+texto:"💻 TU CUENTA FUE HACKEADA",
+opciones:[
+{texto:"Recuperarla",seguidores:-10},
+{texto:"Crear drama",seguidores:30,cordura:-1},
+{texto:"Nueva cuenta",seguidores:-30}
+]
+},
+
+{
+texto:"🔥 VIDEO ULTRA VIRAL",
+opciones:[
+{texto:"Aprovechar",seguidores:120},
+{texto:"Subir parte 2",seguidores:70},
+{texto:"Descansar",salud:2}
+]
+},
+
+{
+texto:"📂 FILTRAN TUS MENSAJES",
+opciones:[
+{texto:"Negarlo",seguidores:-20},
+{texto:"Hacer meme",seguidores:20},
+{texto:"Desaparecer",cordura:2}
+]
+}
+
+];
 
 rolBtn.addEventListener("click",()=>{
 
@@ -111,38 +183,38 @@ rolDisplay.innerText = "Tu rol: " + randomRol;
 
 rolAsignado = true;
 
-eventoDisplay.innerText="Ahora puedes empezar a hacer scroll";
+eventoDisplay.innerText="Empieza tu carrera como influencer";
 
 });
-
-}
-
-/* --------------------------
-SCROLL
--------------------------- */
-
-if(scrollBtn){
 
 scrollBtn.addEventListener("click",()=>{
 
 if(!rolAsignado){
+
 alert("Primero genera tu rol");
 return;
+
 }
 
 generarEvento();
 
 });
 
-}
-
 function generarEvento(){
-
-if(!opcionesDiv) return;
 
 opcionesDiv.innerHTML="";
 
-const evento = eventos[Math.floor(Math.random()*eventos.length)];
+let evento;
+
+if(Math.random() < 0.15){
+
+evento = eventosRaros[Math.floor(Math.random()*eventosRaros.length)];
+
+}else{
+
+evento = eventos[Math.floor(Math.random()*eventos.length)];
+
+}
 
 eventoDisplay.innerText = evento.texto;
 
@@ -166,69 +238,109 @@ opcionesDiv.appendChild(btn);
 
 }
 
-/* --------------------------
-CONSECUENCIAS
--------------------------- */
-
 function aplicarConsecuencias(opcion){
 
-seguidores += opcion.seguidores || 0;
+let bonus = Math.floor(seguidores / 100);
+
+seguidores += (opcion.seguidores || 0) + bonus;
 salud += opcion.salud || 0;
 cordura += opcion.cordura || 0;
 
 if(seguidores < 0) seguidores = 0;
 
+checkLogros();
+
 updateStats();
 
 opcionesDiv.innerHTML="";
 
-eventoDisplay.innerText="Desliza para el siguiente evento";
+eventoDisplay.innerText="Sigue scrolleando...";
 
 }
 
 function updateStats(){
 
-if(seguidoresDisplay) seguidoresDisplay.innerText = seguidores;
-if(saludDisplay) saludDisplay.innerText = salud;
-if(corduraDisplay) corduraDisplay.innerText = cordura;
+seguidoresDisplay.innerText = seguidores;
+saludDisplay.innerText = salud;
+corduraDisplay.innerText = cordura;
 
 if(salud <=0 || cordura <=0){
 
-alert("💀 Tu vida influencer colapsó. Seguidores finales: "+seguidores);
+finalJuego();
+
+}
+
+}
+
+function checkLogros(){
+
+if(seguidores >= 100 && !logros.includes("💯 Micro Influencer")){
+logros.push("💯 Micro Influencer");
+}
+
+if(seguidores >= 500 && !logros.includes("🌟 Influencer Viral")){
+logros.push("🌟 Influencer Viral");
+}
+
+if(seguidores >= 1000 && !logros.includes("👑 Celebridad de Internet")){
+logros.push("👑 Celebridad de Internet");
+}
+
+if(logrosDisplay){
+logrosDisplay.innerText = logros.join(" | ");
+}
+
+}
+
+function finalJuego(){
+
+let finalTexto="";
+
+if(seguidores >= 1000){
+
+finalTexto="👑 Terminaste como una SUPER CELEBRIDAD";
+
+}
+else if(seguidores >= 300){
+
+finalTexto="🌟 Terminaste como influencer famoso";
+
+}
+else{
+
+finalTexto="📱 Terminaste siendo un creador pequeño";
+
+}
+
+alert(finalTexto + "\nSeguidores finales: " + seguidores);
 
 location.reload();
 
 }
 
-}
-
-/* --------------------------
-MODALES DEL INDEX
--------------------------- */
-
 const startBtn = document.getElementById("startBtn");
+
 const modal1 = document.getElementById("modal1");
 const modal2 = document.getElementById("modal2");
+
 const nextModal = document.getElementById("nextModal");
 const closeAll = document.getElementById("closeAll");
 
 if(startBtn){
-startBtn.addEventListener("click",()=>{
+startBtn.addEventListener("click", () => {
 modal1.classList.remove("hidden");
 });
 }
 
 if(nextModal){
-nextModal.addEventListener("click",()=>{
+nextModal.addEventListener("click", () => {
 modal1.classList.add("hidden");
 modal2.classList.remove("hidden");
 });
 }
 
 if(closeAll){
-closeAll.addEventListener("click",()=>{
-window.location.href = "menu.html";
+closeAll.addEventListener("click", () => {
+window.location.href = "index.html";
 });
 }
-
-});
