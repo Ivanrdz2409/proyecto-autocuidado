@@ -1,3 +1,32 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+// ESTADO DEL JUEGO
+let rolAsignado = false;
+let rolActual = "";
+
+let seguidores = 0;
+let salud = 12;
+let cordura = 12;
+
+let logros = [];
+let historialEventos = [];
+const MAX_HISTORIAL = 12;
+
+// ELEMENTOS HTML
+const rolBtn = document.getElementById("rolBtn");
+const rolDisplay = document.getElementById("rolDisplay");
+
+const seguidoresDisplay = document.getElementById("seguidores");
+const saludDisplay = document.getElementById("salud");
+const corduraDisplay = document.getElementById("cordura");
+
+const scrollBtn = document.getElementById("scrollBtn");
+const eventoDisplay = document.getElementById("evento");
+const opcionesDiv = document.getElementById("opciones");
+
+const logrosDisplay = document.getElementById("logros");
+
+// ROLES
 const roles = [
 
 "Gamer Pro 🎮",
@@ -18,31 +47,7 @@ const roles = [
 
 ];
 
-let rolAsignado = false;
-let rolActual = "";
-
-let seguidores = 0;
-let salud = 12;
-let cordura = 12;
-
-let logros = [];
-
-let historialEventos = [];
-const MAX_HISTORIAL = 10;
-
-const rolBtn = document.getElementById("rolBtn");
-const rolDisplay = document.getElementById("rolDisplay");
-
-const seguidoresDisplay = document.getElementById("seguidores");
-const saludDisplay = document.getElementById("salud");
-const corduraDisplay = document.getElementById("cordura");
-
-const scrollBtn = document.getElementById("scrollBtn");
-const eventoDisplay = document.getElementById("evento");
-const opcionesDiv = document.getElementById("opciones");
-
-const logrosDisplay = document.getElementById("logros");
-
+// EVENTOS GENERALES
 const eventos = [
 
 {
@@ -137,6 +142,7 @@ opciones:[
 
 ];
 
+// EVENTOS RAROS
 const eventosRaros = [
 
 {
@@ -151,9 +157,9 @@ opciones:[
 {
 texto:"💻 TU CUENTA FUE HACKEADA",
 opciones:[
-{texto:"Recuperarla",seguidores:-10},
+{texto:"Intentar recuperarla",seguidores:-10},
 {texto:"Crear drama",seguidores:30,cordura:-1},
-{texto:"Nueva cuenta",seguidores:-30}
+{texto:"Crear nueva cuenta",seguidores:-30}
 ]
 },
 
@@ -168,6 +174,7 @@ opciones:[
 
 ];
 
+// EVENTOS POR ROL
 const eventosPorRol = {
 
 "Gamer Pro 🎮":[
@@ -194,7 +201,7 @@ opciones:[
 
 };
 
-if(rolBtn){
+// GENERAR ROL
 rolBtn.addEventListener("click",()=>{
 
 if(rolAsignado) return;
@@ -207,12 +214,11 @@ rolDisplay.innerText = "Tu rol: " + randomRol;
 
 rolAsignado = true;
 
-eventoDisplay.innerText="Empieza tu carrera como influencer";
+eventoDisplay.innerText="Tu carrera comienza ahora...";
 
 });
-}
 
-if(scrollBtn){
+// SCROLL
 scrollBtn.addEventListener("click",()=>{
 
 if(!rolAsignado){
@@ -223,8 +229,8 @@ return;
 generarEvento();
 
 });
-}
 
+// GENERAR EVENTO
 function generarEvento(){
 
 opcionesDiv.innerHTML="";
@@ -260,15 +266,11 @@ evento.opciones.forEach(opcion=>{
 
 const btn = document.createElement("button");
 
-btn.classList.add("opcionBtn");
-
 btn.innerText = opcion.texto;
 
-btn.onclick = ()=>{
+btn.classList.add("opcionBtn");
 
-aplicarConsecuencias(opcion);
-
-};
+btn.onclick = ()=> aplicarConsecuencias(opcion);
 
 opcionesDiv.appendChild(btn);
 
@@ -276,11 +278,10 @@ opcionesDiv.appendChild(btn);
 
 }
 
+// APLICAR CONSECUENCIAS
 function aplicarConsecuencias(opcion){
 
-let bonus = Math.floor(seguidores / 100);
-
-seguidores += (opcion.seguidores || 0) + bonus;
+seguidores += opcion.seguidores || 0;
 salud += opcion.salud || 0;
 cordura += opcion.cordura || 0;
 
@@ -296,6 +297,7 @@ eventoDisplay.innerText="Sigue scrolleando...";
 
 }
 
+// ACTUALIZAR STATS
 function updateStats(){
 
 seguidoresDisplay.innerText = seguidores;
@@ -303,13 +305,12 @@ saludDisplay.innerText = salud;
 corduraDisplay.innerText = cordura;
 
 if(salud <=0 || cordura <=0){
-
 finalJuego();
-
 }
 
 }
 
+// LOGROS
 function checkLogros(){
 
 if(seguidores >= 100 && !logros.includes("💯 Micro Influencer")){
@@ -330,24 +331,19 @@ logrosDisplay.innerText = logros.join(" | ");
 
 }
 
+// FINAL
 function finalJuego(){
 
 let finalTexto="";
 
 if(seguidores >= 1000){
-
-finalTexto="👑 Terminaste como una SUPER CELEBRIDAD";
-
+finalTexto="👑 Terminaste como SUPER CELEBRIDAD";
 }
 else if(seguidores >= 300){
-
 finalTexto="🌟 Terminaste como influencer famoso";
-
 }
 else{
-
-finalTexto="📱 Terminaste siendo un creador pequeño";
-
+finalTexto="📱 Terminaste como creador pequeño";
 }
 
 alert(finalTexto + "\nSeguidores finales: " + seguidores);
@@ -355,3 +351,5 @@ alert(finalTexto + "\nSeguidores finales: " + seguidores);
 location.reload();
 
 }
+
+});
