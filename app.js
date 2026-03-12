@@ -19,6 +19,7 @@ const roles = [
 ];
 
 let rolAsignado = false;
+let rolActual = "";
 
 let seguidores = 0;
 let salud = 12;
@@ -38,6 +39,8 @@ const eventoDisplay = document.getElementById("evento");
 const opcionesDiv = document.getElementById("opciones");
 
 const logrosDisplay = document.getElementById("logros");
+
+// EVENTOS GENERALES
 
 const eventos = [
 
@@ -133,6 +136,8 @@ opciones:[
 
 ];
 
+// EVENTOS RAROS
+
 const eventosRaros = [
 
 {
@@ -173,11 +178,73 @@ opciones:[
 
 ];
 
+// EVENTOS POR ROL
+
+const eventosPorRol = {
+
+"Gamer Pro 🎮":[
+{
+texto:"🎮 Torneo online aparece",
+opciones:[
+{texto:"Participar",seguidores:40,salud:-2},
+{texto:"Streamearlo",seguidores:30},
+{texto:"Ignorarlo",cordura:1}
+]
+},
+{
+texto:"🕹 Nuevo juego viral",
+opciones:[
+{texto:"Jugar 8 horas",seguidores:35,salud:-3},
+{texto:"Stream corto",seguidores:15},
+{texto:"Ignorarlo",cordura:1}
+]
+}
+],
+
+"Influencer Fitness 🏋️":[
+{
+texto:"🏋️ Reto fitness viral",
+opciones:[
+{texto:"Intentarlo",seguidores:35,salud:-2},
+{texto:"Versión ligera",seguidores:15},
+{texto:"Ignorar",cordura:1}
+]
+}
+],
+
+"TikToker de Bailes 💃":[
+{
+texto:"💃 Nuevo trend de baile",
+opciones:[
+{texto:"Aprender coreografía",seguidores:35,salud:-1},
+{texto:"Improvisar",seguidores:20},
+{texto:"Ignorar",cordura:1}
+]
+}
+],
+
+"Conspiranoico 🛸":[
+{
+texto:"🛸 Nueva teoría alien aparece",
+opciones:[
+{texto:"Hacer video",seguidores:40,cordura:-2},
+{texto:"Investigar más",seguidores:15},
+{texto:"Ignorar",cordura:1}
+]
+}
+]
+
+};
+
+// GENERAR ROL
+
 rolBtn.addEventListener("click",()=>{
 
 if(rolAsignado) return;
 
 const randomRol = roles[Math.floor(Math.random()*roles.length)];
+
+rolActual = randomRol;
 
 rolDisplay.innerText = "Tu rol: " + randomRol;
 
@@ -186,6 +253,8 @@ rolAsignado = true;
 eventoDisplay.innerText="Empieza tu carrera como influencer";
 
 });
+
+// SCROLL
 
 scrollBtn.addEventListener("click",()=>{
 
@@ -200,17 +269,31 @@ generarEvento();
 
 });
 
+// GENERAR EVENTO
+
 function generarEvento(){
 
 opcionesDiv.innerHTML="";
 
 let evento;
 
-if(Math.random() < 0.15){
+const random = Math.random();
+
+if(random < 0.15){
 
 evento = eventosRaros[Math.floor(Math.random()*eventosRaros.length)];
 
-}else{
+}
+
+else if(random < 0.40 && eventosPorRol[rolActual]){
+
+const lista = eventosPorRol[rolActual];
+
+evento = lista[Math.floor(Math.random()*lista.length)];
+
+}
+
+else{
 
 evento = eventos[Math.floor(Math.random()*eventos.length)];
 
@@ -238,6 +321,8 @@ opcionesDiv.appendChild(btn);
 
 }
 
+// CONSECUENCIAS
+
 function aplicarConsecuencias(opcion){
 
 let bonus = Math.floor(seguidores / 100);
@@ -258,6 +343,8 @@ eventoDisplay.innerText="Sigue scrolleando...";
 
 }
 
+// ACTUALIZAR STATS
+
 function updateStats(){
 
 seguidoresDisplay.innerText = seguidores;
@@ -271,6 +358,8 @@ finalJuego();
 }
 
 }
+
+// LOGROS
 
 function checkLogros(){
 
@@ -291,6 +380,8 @@ logrosDisplay.innerText = logros.join(" | ");
 }
 
 }
+
+// FINAL
 
 function finalJuego(){
 
@@ -317,6 +408,8 @@ alert(finalTexto + "\nSeguidores finales: " + seguidores);
 location.reload();
 
 }
+
+// MODALES
 
 const startBtn = document.getElementById("startBtn");
 
