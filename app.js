@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-// ESTADO DEL JUEGO
+/* ---------------- ESTADO DEL JUEGO ---------------- */
+
 let rolAsignado = false;
 let rolActual = "";
 
@@ -9,10 +10,12 @@ let salud = 12;
 let cordura = 12;
 
 let logros = [];
-let historialEventos = [];
-const MAX_HISTORIAL = 12;
 
-// ELEMENTOS HTML
+let historialEventos = [];
+const MAX_HISTORIAL = 10;
+
+/* ---------------- ELEMENTOS HTML ---------------- */
+
 const rolBtn = document.getElementById("rolBtn");
 const rolDisplay = document.getElementById("rolDisplay");
 
@@ -26,7 +29,8 @@ const opcionesDiv = document.getElementById("opciones");
 
 const logrosDisplay = document.getElementById("logros");
 
-// ROLES
+/* ---------------- ROLES ---------------- */
+
 const roles = [
 
 "Gamer Pro 🎮",
@@ -47,7 +51,8 @@ const roles = [
 
 ];
 
-// EVENTOS GENERALES
+/* ---------------- EVENTOS GENERALES ---------------- */
+
 const eventos = [
 
 {
@@ -142,7 +147,8 @@ opciones:[
 
 ];
 
-// EVENTOS RAROS
+/* ---------------- EVENTOS RAROS ---------------- */
+
 const eventosRaros = [
 
 {
@@ -174,7 +180,8 @@ opciones:[
 
 ];
 
-// EVENTOS POR ROL
+/* ---------------- EVENTOS POR ROL ---------------- */
+
 const eventosPorRol = {
 
 "Gamer Pro 🎮":[
@@ -201,8 +208,9 @@ opciones:[
 
 };
 
-// GENERAR ROL
-rolBtn.addEventListener("click",()=>{
+/* ---------------- GENERAR ROL ---------------- */
+
+rolBtn.addEventListener("click", () => {
 
 if(rolAsignado) return;
 
@@ -214,12 +222,13 @@ rolDisplay.innerText = "Tu rol: " + randomRol;
 
 rolAsignado = true;
 
-eventoDisplay.innerText="Tu carrera comienza ahora...";
+eventoDisplay.innerText = "Empieza tu carrera como influencer";
 
 });
 
-// SCROLL
-scrollBtn.addEventListener("click",()=>{
+/* ---------------- SCROLL ---------------- */
+
+scrollBtn.addEventListener("click", () => {
 
 if(!rolAsignado){
 alert("Primero genera tu rol");
@@ -230,10 +239,11 @@ generarEvento();
 
 });
 
-// GENERAR EVENTO
+/* ---------------- GENERAR EVENTO ---------------- */
+
 function generarEvento(){
 
-opcionesDiv.innerHTML="";
+opcionesDiv.innerHTML = "";
 
 let listaEventos = [...eventos];
 
@@ -262,15 +272,15 @@ historialEventos.shift();
 
 eventoDisplay.innerText = evento.texto;
 
-evento.opciones.forEach(opcion=>{
+evento.opciones.forEach(opcion => {
 
 const btn = document.createElement("button");
 
-btn.innerText = opcion.texto;
-
 btn.classList.add("opcionBtn");
 
-btn.onclick = ()=> aplicarConsecuencias(opcion);
+btn.innerText = opcion.texto;
+
+btn.onclick = () => aplicarConsecuencias(opcion);
 
 opcionesDiv.appendChild(btn);
 
@@ -278,7 +288,8 @@ opcionesDiv.appendChild(btn);
 
 }
 
-// APLICAR CONSECUENCIAS
+/* ---------------- CONSECUENCIAS ---------------- */
+
 function aplicarConsecuencias(opcion){
 
 seguidores += opcion.seguidores || 0;
@@ -287,30 +298,31 @@ cordura += opcion.cordura || 0;
 
 if(seguidores < 0) seguidores = 0;
 
+updateStats();
 checkLogros();
 
-updateStats();
+opcionesDiv.innerHTML = "";
 
-opcionesDiv.innerHTML="";
-
-eventoDisplay.innerText="Sigue scrolleando...";
+eventoDisplay.innerText = "Sigue scrolleando...";
 
 }
 
-// ACTUALIZAR STATS
+/* ---------------- ACTUALIZAR STATS ---------------- */
+
 function updateStats(){
 
 seguidoresDisplay.innerText = seguidores;
 saludDisplay.innerText = salud;
 corduraDisplay.innerText = cordura;
 
-if(salud <=0 || cordura <=0){
+if(salud <= 0 || cordura <= 0){
 finalJuego();
 }
 
 }
 
-// LOGROS
+/* ---------------- LOGROS ---------------- */
+
 function checkLogros(){
 
 if(seguidores >= 100 && !logros.includes("💯 Micro Influencer")){
@@ -331,7 +343,8 @@ logrosDisplay.innerText = logros.join(" | ");
 
 }
 
-// FINAL
+/* ---------------- FINAL ---------------- */
+
 function finalJuego(){
 
 let finalTexto="";
@@ -343,7 +356,7 @@ else if(seguidores >= 300){
 finalTexto="🌟 Terminaste como influencer famoso";
 }
 else{
-finalTexto="📱 Terminaste como creador pequeño";
+finalTexto="📱 Terminaste siendo creador pequeño";
 }
 
 alert(finalTexto + "\nSeguidores finales: " + seguidores);
