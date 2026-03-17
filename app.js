@@ -366,3 +366,53 @@ location.reload();
 }
 
 });
+
+const dado = document.getElementById("dado");
+const container = document.getElementById("dado-container");
+const cerrar = document.getElementById("cerrar");
+
+let expandido = false;
+let rodando = false;
+
+const caras = ["⚀","⚁","⚂","⚃","⚄","⚅"];
+
+dado.addEventListener("click", () => {
+  if (rodando) return;
+
+  // Expandir si no lo está
+  if (!expandido) {
+    container.classList.add("expandido");
+    cerrar.style.display = "block";
+    expandido = true;
+  }
+
+  rodando = true;
+
+  // Inicia animación
+  dado.classList.add("girando");
+
+  // Espera a que termine la animación
+  setTimeout(() => {
+    dado.classList.remove("girando");
+
+    const numero = Math.floor(Math.random() * 6);
+    dado.textContent = caras[numero];
+
+    rodando = false;
+
+    console.log("Resultado:", numero + 1);
+
+    // 👉 Conecta aquí tu lógica del juego
+    // moverJugador(numero + 1);
+
+  }, 1000);
+});
+
+// Minimizar
+cerrar.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  container.classList.remove("expandido");
+  cerrar.style.display = "none";
+  expandido = false;
+});
