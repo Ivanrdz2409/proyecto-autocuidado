@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones - Scroll Infinito</title>
+    <link rel="stylesheet" href="instrucciones.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="instructions-container">
+            <h1 class="title">📖 Cómo jugar</h1>
+            
+            <!-- TEXTO PRINCIPAL - Aquí puedes cambiar el texto fácilmente -->
+            <h1 id="instruction-text" class="main-text">
+                Bienvenido a <strong>Scroll Infinito</strong><br><br>
+                Eres un influencer que intenta ganar seguidores sin perder la cordura.
+            </h1>
+
+            <!-- Audio fijo (no modificable) -->
+            <div class="audio-section">
+                <p>🎵 Audio explicativo:</p>
+                <audio id="game-audio" controls>
+                    <source src="audio.mp3" type="audio/mpeg">
+                    Tu navegador no soporta audio.
+                </audio>
+            </div>
+
+            <!-- Botón para cambiar de texto -->
+            <button id="next-text-btn" class="next-btn">
+                Ver siguiente explicación →
+            </button>
+            <div class="language-selector">
+    <button id="lang-btn" class="lang-btn">🌐 Español / English</button>
+</div>
+
+<h1 id="instruction-text" class="main-text">
+    </h1>
+
+            <!-- Botón para volver -->
+            <button id="back-btn" class="back-btn">
+                ← Volver al Menú
+            </button>
+        </div>
+    </div>
+
+    <script src="instrucciones.js"></script>
+</body>
+</html>

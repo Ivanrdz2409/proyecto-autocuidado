@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Teléfono más grande y cómodo */
+.phone-frame {
+    width: 440px;
+    height: 760px;
+    background: #000;
+    border: 16px solid #111;
+    border-radius: 60px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.instructions-container {
+    width: 100%;
+    height: 100%;
+    background: #0f0f1e;
+    padding: 35px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y: auto;
+}
+
+.title {
+    text-align: center;
+    color: #00ffcc;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* Texto principal grande (tipo h1) */
+.main-text {
+    font-size: 1.45rem;
+    line-height: 1.7;
+    color: #e0e0ff;
+    text-align: center;
+    font-weight: 400;
+}
+
+.main-text strong {
+    color: #00ffcc;
+}
+
+/* Audio */
+.audio-section {
+    background: #1e1e2e;
+    border-radius: 15px;
+    padding: 18px;
+    text-align: center;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Botones */
+.next-btn, .back-btn {
+    padding: 16px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.next-btn {
+    background: #00ffcc;
+    color: #000;
+}
+
+.next-btn:hover:not(:disabled) {
+    background: #00ccaa;
+    transform: scale(1.05);
+}
+
+.next-btn:disabled {
+    background: #006644;
+    color: #88ffcc;
+    cursor: not-allowed;
+}
+
+.back-btn {
+    background: #333;
+    color: white;
+}
+
+.back-btn:hover {
+    background: #555;
+}
+.main-text {
+    /* Esto asegura que el texto no se divida en columnas extrañas */
+    display: block; 
+    width: 100%;
+    
+    /* Centrado y espaciado */
+    text-align: center;
+    margin: 20px 0;
+    padding: 0 15px; /* Espacio a los lados para que no toque los bordes del teléfono */
+    
+    /* Tipografía */
+    font-size: 1.2rem;
+    line-height: 1.6; /* Espaciado entre líneas para mejor lectura */
+    color: white;
+    word-wrap: break-word; /* Evita que palabras largas rompan el diseño */
+}
+
+/* Si quieres que "El Tablero:" o palabras resaltadas no fuercen saltos de línea */
+.main-text strong {
+    display: inline; 
+    color: #00ffcc; /* El color verde neón de tu captura */
+}
+/* Estilo para que el texto en inglés se vea como un "subtítulo" */
+.main-text br + strong, 
+.main-text br + b {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+.language-selector {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.lang-btn {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.lang-btn:hover {
+    background: #ddd;
+}

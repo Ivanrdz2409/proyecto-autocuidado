@@ -27,3 +27,11 @@ window.location.href = "menu.html";
 }
 
 });
+
+const instBtn = document.getElementById("instBtn");
+
+if(instBtn){
+instBtn.addEventListener("click", () => {
+window.location.href = "instrucciones.html";
+});
+}
