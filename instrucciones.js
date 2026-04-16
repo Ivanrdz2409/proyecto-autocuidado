@@ -16,12 +16,12 @@ const content = {
         `<strong>¡Cuidado!</strong> El jugador más cuerdo y con más seguidores gana. ¡No dejes que tus stats lleguen a 0!`
     ],
     en: [
-        `Welcome to <strong>Infinite Scroll</strong><br><br>You are an influencer trying to gain followers without losing your sanity.`,
+        `Welcome to <strong>Infinite Scroll</strong>. You are an influencer trying to gain followers without losing your sanity.`,
         `<strong>Step 1:</strong> Scan the QR code to begin.`,
-        `<strong>Step 2:</strong> Tap the <strong>"Assign Role"</strong> button. You will be assigned a role and a game piece immediately.`,
-        `<strong>The Board:</strong> If you land on special tiles, you must <strong>"scroll"</strong> and choose between 3 options.`,
-        `<strong>The Goal:</strong> Complete <strong>3 laps</strong> around the board. You earn 3 bonus scrolls per lap.`,
-        `<strong>Warning!</strong> The player with the most followers and sanity wins. Don't let your stats hit 0!`
+        `<strong>Step 2:</strong> Press the "Assign Role" button. A role will be immediately assigned to you, determining the piece you will use.`,
+        `<strong>Game Board:</strong> If you land on special squares, you must "scroll" and choose between 3 decisions (favorable or unfavorable).`,
+        `<strong>Rules:</strong> Roll the dice to advance. Every time you complete a lap, you can "scroll" 3 times during your next lap.`,
+        `<strong>Victory:</strong> The player with the most followers and sanity after 3 laps wins. Watch your health or you might lose your turn!`
     ]
 };
 
